@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>eMAS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:#f5f6f8;
+}
+
+.app{
+  width:100%;
+  min-height:100vh;
+  background:#fff;
+  position:relative;
+  overflow:hidden;
+}
+
+/* ================= HEADER ================= */
+
+.header{
+  background:linear-gradient(180deg,#1f8ef1 0%, #42a5f5 100%);
+  padding:20px 20px 240px; /* diperbesar supaya card aman */
+  position:relative;
+  color:white;
+}
+
+.header-title{
+  font-size:18px;
+  font-weight:600;
+}
+
+/* CARD IMAGE */
+
+.top-card{
+  position:absolute;
+  top:70px;
+  left:50%;
+  transform:translateX(-50%);
+  width:90%;
+  height:240px;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 15px 35px rgba(0,0,0,0.25);
+  background:#000;
+}
+
+.full-emas{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+}
+
+/* WAVE FIXED */
+
+.wave{
+  position:absolute;
+  bottom:-60px; /* diturunkan supaya tidak nutup card */
+  left:0;
+  width:100%;
+}
+
+/* ================= CONTENT ================= */
+
+.content{
+  margin-top:260px; /* diturunkan mengikuti wave */
+  padding:20px;
+  padding-bottom:170px;
+}
+
+.balance-box{
+  background:#f7f8fa;
+  padding:16px;
+  border-radius:16px;
+  margin-bottom:18px;
+}
+
+.balance-title{
+  font-size:13px;
+  color:#777;
+  margin-bottom:6px;
+}
+
+.balance-amount{
+  font-size:20px;
+  font-weight:700;
+}
+
+.gain{
+  font-size:13px;
+  color:#2e7d32;
+  font-weight:600;
+}
+
+/* Tabs */
+
+.tabs{
+  display:flex;
+  background:#eaecef;
+  border-radius:30px;
+  padding:4px;
+  margin-bottom:18px;
+}
+
+.tab{
+  flex:1;
+  text-align:center;
+  padding:8px;
+  font-size:13px;
+  border-radius:20px;
+}
+
+.tab.active{
+  background:#1f8ef1;
+  color:white;
+  font-weight:600;
+}
+
+/* Chart */
+
+.chart{
+  height:190px;
+  border-radius:16px;
+  background:linear-gradient(to top, rgba(31,142,241,0.15), transparent);
+  padding:10px;
+}
+
+/* Range */
+
+.range{
+  display:flex;
+  gap:8px;
+  margin-top:16px;
+}
+
+.range button{
+  flex:1;
+  padding:8px;
+  border-radius:20px;
+  border:1px solid #ddd;
+  background:#fff;
+  font-size:12px;
+}
+
+.range button.active{
+  background:#1f8ef1;
+  color:white;
+  border:none;
+}
+
+/* ================= BOTTOM ================= */
+
+.bottom{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#fff;
+  border-top:1px solid #eee;
+  padding:15px 20px 25px;
+}
+
+.price-row{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:15px;
+  font-size:13px;
+}
+
+.price-row b{
+  font-size:15px;
+}
+
+.action{
+  display:flex;
+  gap:10px;
+}
+
+.action button{
+  flex:1;
+  padding:12px;
+  border-radius:12px;
+  border:none;
+  font-weight:600;
+}
+
+.sell{
+  background:#e3f2fd;
+  color:#1f8ef1;
+}
+
+.buy{
+  background:#1f8ef1;
+  color:white;
+}
+
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <div class="header">
+    <div class="header-title">eMAS</div>
+
+    <div class="top-card">
+      <img src="emas.jpg" class="full-emas">
+    </div>
+
+    <svg class="wave" viewBox="0 0 500 100" preserveAspectRatio="none">
+      <path d="M0,40 C150,100 350,0 500,60 L500,100 L0,100 Z" fill="#ffffff"/>
+    </svg>
+  </div>
+
+  <div class="content">
+
+    <div class="balance-box">
+      <div class="balance-title">Nilai tabungan eMAS kamu</div>
+      <div class="balance-amount">Rp1.870.302</div>
+      <div class="gain">▲ Rp56.860 (3,02%)</div>
+    </div>
+
+    <div class="tabs">
+      <div class="tab active">Grafik Harga Beli</div>
+      <div class="tab">Grafik Harga Jual</div>
+    </div>
+
+    <div class="chart">
+      <svg viewBox="0 0 300 150" width="100%" height="100%">
+        <path d="M0,100 
+                 C40,60 80,140 120,110
+                 C160,90 200,40 240,70
+                 C260,85 280,95 300,80
+                 L300,150 L0,150 Z"
+              fill="rgba(31,142,241,0.25)"/>
+        <path d="M0,100 
+                 C40,60 80,140 120,110
+                 C160,90 200,40 240,70
+                 C260,85 280,95 300,80"
+              fill="none"
+              stroke="#1f8ef1"
+              stroke-width="3"/>
+      </svg>
+    </div>
+
+    <div class="range">
+      <button class="active">7 Hari</button>
+      <button>1 Bulan</button>
+      <button>3 Bulan</button>
+      <button>6 Bulan</button>
+      <button>1 Tahun</button>
+    </div>
+
+  </div>
+
+  <div class="bottom">
+    <div class="price-row">
+      <div>
+        Harga Jual Terbaru<br>
+        <b>Rp2.162.949/g</b>
+      </div>
+      <div style="text-align:right;">
+        Harga Beli Terbaru<br>
+        <b>Rp2.239.391/g</b>
+      </div>
+    </div>
+
+    <div class="action">
+      <button class="sell">JUAL eMAS</button>
+      <button class="buy">BELI eMAS</button>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
